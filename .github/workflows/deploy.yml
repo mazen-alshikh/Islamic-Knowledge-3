@@ -13,7 +13,7 @@ jobs:
     runs-on: ubuntu-latest
 
     permissions:
-      contents: write  # Allow pushing to the repository
+      contents: write  # Explicit write permission to contents
 
     steps:
       - uses: actions/checkout@v4
@@ -37,7 +37,6 @@ jobs:
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
-        if: github.ref == 'refs/heads/main'
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}  # Use GitHub's token
+          github_token: ${{ secrets.GITHUB_TOKEN }}  # Use GitHub token with proper permissions
           publish_dir: ./dist
